@@ -56,12 +56,24 @@
         <!-- -----------------------contenido barra lateral-------------------- -->
         <div class= "max hidden text-white mt-20 flex-col space-y-2 w-full h-[calc(100vh)]">
             
-            <div class =  "hover:ml-4 w-full text-white hover:text-purple-500 dark:hover:text-blue-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
-                <svg class="h-5 w-5 text-slate-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" /></svg>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                </svg>    
-                <div>
-                    Materiales
+            <div class="w-full p-2">
+                <div class="hover:ml-4 w-full text-white hover:text-purple-500 dark:hover:text-blue-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3 cursor-pointer" onclick="toggleAccordion()">
+                    <svg class="h-5 w-5 text-slate-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+                    </svg>
+                    <div class="flex-grow">
+                        Materiales
+                    </div>
+                    <svg id="accordion-icon" class="h-5 w-5 text-slate-500 transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14" />
+                    </svg>
+                </div>
+            
+                <div id="accordion-content" class="hidden mt-2 pl-8 pr-8 bg-[#1E293B] rounded-md text-white">
+                    <ul class="space-y-2">
+                        <li>Agregar Materiales</li>
+                    </ul>
                 </div>
             </div>
             
@@ -405,5 +417,26 @@
             }
         }
     </script>
+
+
+
+
+
+
+
+<script>
+    function toggleAccordion() {
+        const content = document.getElementById('accordion-content');
+        const icon = document.getElementById('accordion-icon');
+        content.classList.toggle('hidden');
+
+        // Cambiar el icono de "+" a "-" al desplegar
+        if (content.classList.contains('hidden')) {
+            icon.innerHTML = '<path d="M12 5v14M5 12h14" />';
+        } else {
+            icon.innerHTML = '<path d="M5 12h14" />';
+        }
+    }
+</script>
 </body>
 </html>
